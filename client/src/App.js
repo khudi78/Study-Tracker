@@ -19,6 +19,9 @@ import LongTerm from "./pages/LongTerm";
 import Shortterm from "./pages/DashBoard/Shortterm";
 import Longterm from "./pages/DashBoard/Longterm";
 import Demo from "./pages/DashBoard/Demo";
+import Completed from './Component/StudyGoal/Completed';
+import Future from './Component/StudyGoal/Future';
+import Current from './Component/StudyGoal/Current';
 //import { UserContextProvider } from './context/userContext';
 
 axios.defaults.baseURL = "http://localhost:8000/api";
@@ -39,6 +42,10 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/tasklist" element={<TaskList />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path='/completed' element={<Completed/>}></Route>
+          <Route path='/future' element={<Future/>}></Route>
+          <Route path='/current' element={<Current/>}></Route>
+        
          
           <Route
             path="/userProfile"

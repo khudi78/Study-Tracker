@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-
+import { useStudy } from "../context/StudyGoal";
 const UserProfile = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [hoveredDate, setHoveredDate] = useState(null);
@@ -8,8 +8,9 @@ const UserProfile = () => {
   const [events, setEvents] = useState({});
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-
+  const {studygoal,StudyDispatch}=useStudy();
   console.log(events);
+  console.log(studygoal)
   const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
 
   const getMonthData = (month, year) => {
@@ -48,6 +49,10 @@ const UserProfile = () => {
         ...prevEvents,
         [key]: { name: event, time: time || "All Day" },
       }));
+      StudyDispatch({
+        type:"STUDYGOAL",
+        payload:{event,key}
+      })
       setSelectedDate(null); // Clear selected date after adding an event
     }
   };
