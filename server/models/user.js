@@ -14,6 +14,11 @@ const userSchema= new Schema({
     topic:String,
     duration:String
     }],
+    long:[{
+        subject:String,
+        topic:String,
+        duration:String
+        }],
     
 })
 

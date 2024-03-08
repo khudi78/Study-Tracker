@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import DropDownGoal from "../Component/DropDownGoal";
 import {useContext} from "react"
 import { UserContext } from "../context/userContext"
-
+import {NavLink} from "react-router-dom"
+import Demo from "./DashBoard/Demo";
 
 function DashBoard() {
   const [expand, SetExpand] = useState(false);
@@ -43,15 +44,26 @@ function DashBoard() {
             <span class="material-symbols-outlined text-white">chevron_right</span>
             <span className="text-lg font-semibold text-white">Future</span>
           </div>
+          <div className="flex items-center">
+            <span class="material-symbols-outlined text-white">chevron_right</span>
+            <NavLink to="/short"><span className="text-lg font-semibold text-white">ShortTerm</span></NavLink>
+          </div>
+          <div className="flex items-center">
+            <span class="material-symbols-outlined text-white">chevron_right</span>
+            <NavLink to="/long"><span className="text-lg font-semibold text-white">LongTerm</span></NavLink>
+          </div>
         </div>
      </div>
     </div>
-    <div className="flex">
-    <div><h1 className=" w-72 h-64 ml-96  border border-white"></h1></div>
-    <div><h1 className=" w-72 h-64 ml-96  border border-white"></h1></div>
+    <div className="flex flex-col">
+    
+    <div><h1 className=" w-[1000px] h-64 ml-96   text-white">
+     <Demo/>
+    </h1></div>
+    
+    
     </div>
     <div><h1 className=" mt-10 w-[50%] h-44 ml-96  border border-white"></h1></div>
-
     </div>
   );
 }

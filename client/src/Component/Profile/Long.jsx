@@ -9,9 +9,9 @@ import {useContext} from "react"
 import { UserContext } from "../../context/userContext";
 
 function Todo() {
-  const [sub, setSub] = useState("");
-  const [top, setTop] = useState("");
-  const [dur, setDur] = useState("");
+  const [subject, setSubject] = useState("");
+  const [topic, setTopic] = useState("");
+  const [duration, setDuration] = useState("");
   const dispatch = useDispatch();
   const navigate=useNavigate()
   const {user} =useContext(UserContext)
@@ -25,9 +25,9 @@ function Todo() {
     // dispatch(addTodo(subject));
     // dispatch(addTodo(topic));
     // dispatch(addTodo(duration));
-        setSub("");
-    setTop("");
-    setDur("");
+        setSubject("");
+    setTopic("");
+    setDuration("");
   };
 
   const [data, setData] = useState({
@@ -38,9 +38,9 @@ function Todo() {
 
   const shortTermGoal = async (e) => {
     e.preventDefault();
-    const {sub,top,dur}= data
+    const {subject,topic,duration}= data
     try{
-       const {data} = await axios.put(`/shortTerm/${userId}`,{
+       const {data} = await axios.put(`/longTerm/${userId}`,{
         subject,topic,duration
        })
 
@@ -48,7 +48,7 @@ function Todo() {
         toast.error(data.error)
        }else{
         setData({})
-        toast.success('Short Term goal added!')
+        toast.success('Long Term goal added!')
         navigate('/login')
        }
        
@@ -70,7 +70,7 @@ function Todo() {
           className="text-white outline-none bg-transparent border-b-2 m-4 border-blue-200 w-[30rem] text-2xl text-center placeholder:text-gray-400 placeholder:text-2xl"
           value={data.subject}
           onChange={(e) => {
-            setSub(e.target.value);
+            setSubject(e.target.value);
             setData({ ...data, subject: e.target.value });
           }}
           placeholder="Enter the Subject"
@@ -80,7 +80,7 @@ function Todo() {
           className="text-white outline-none bg-transparent border-b-2 m-4 border-blue-200 w-[30rem] text-2xl text-center placeholder:text-gray-400 placeholder:text-2xl"
           value={data.topic}
           onChange={(e) => {
-            setTop(e.target.value);
+            setTopic(e.target.value);
             setData({ ...data, topic: e.target.value });
           }}
           placeholder="Enter the topic"
@@ -90,7 +90,7 @@ function Todo() {
           className="text-white outline-none bg-transparent border-b-2 m-4 border-blue-200 w-[30rem] text-2xl text-center placeholder:text-gray-400 placeholder:text-2xl"
           value={data.duration}
           onChange={(e) => {
-            setDur(e.target.value);
+            setDuration(e.target.value);
             setData({ ...data, duration: e.target.value });
           }}
           placeholder="Enter duration"
