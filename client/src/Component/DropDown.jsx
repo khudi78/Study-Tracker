@@ -8,7 +8,7 @@ function DropDown({ HandleDrop }) {
 
   return (
     <div
-      className={`absolute right-0 h-[90%]  flex flex-col justify-between bg-gray-950/90  w-64 `}
+      className={`absolute right-0 h-[90%]  flex flex-col justify-between bg-gray-950/90  w-64 z-20`}
     >
       <div className="flex flex-col gap-10 w-full justify-center">
         <div className="flex flex-col">
@@ -28,15 +28,20 @@ function DropDown({ HandleDrop }) {
             </h3>
           </div>
         </div>
-        <div className="flex items-center w-64  rounded-2xl p-1 hover:bg-cyan-950 justify-center">
+        <Link
+          to="/timer"
+          className="flex items-center w-64 rounded-2xl p-1 hover:bg-cyan-950 justify-center"
+          onClick={() => HandleDrop()}
+        >
           <span class="material-symbols-outlined text-white">timer</span>
-          <span className="text-lg font-medium text-white">Timer</span>
-        </div>
+          <span className="text-lg font-medium  text-white">TImer</span>
+        </Link>
         <Link
           to="/userprofile"
           className=" flex items-center w-64  rounded-2xl p-1 hover:bg-cyan-950 justify-center"
           onClick={() => HandleDrop()}
         >
+         <span class="material-symbols-outlined text-white">person</span>
           <span className="text-lg font-medium text-white">User Profile</span>
         </Link>
         <Link

@@ -8,6 +8,7 @@ import axios from 'axios';
 import {Toaster} from 'react-hot-toast'
 import { UserContextProvider } from './context/userContext';
 import Dashboard from './pages/Dashboard';
+import Timer from './Component/Timer';
 import image2 from'./image1.png'
 import UserProfile from "./Component/UserProfile";
 import UserDetails from "./Component/UserDetails";
@@ -35,12 +36,13 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/timer" element={<Timer/>}/>
         <Route path='/tasklist' element={<TaskList/>}></Route>
         <Route path='/contact' element={<Contact/>}></Route>
         <Route path='/userProfile' element={<div className="flex justify-between">
         <UserDetails/>
           <UserProfile/>
-          <img src={image2} className="h-96 w-[38rem] absolute bottom-0 "></img>
+          <img src={image2} className="filter brightness-50 h-96 w-[38rem] absolute bottom-0 "></img>
           </div>}>
           </Route>
           <Route path='/shortterm' element={<ShortTerm/>}></Route>
