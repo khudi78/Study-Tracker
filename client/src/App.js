@@ -39,9 +39,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/tasklist" element={<TaskList />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/completed" element={<Completed />}></Route>
-          <Route path="/future" element={<Future />}></Route>
-          <Route path="/current" element={<Current />}></Route>
+         
           <Route
             path="/userProfile"
             element={
