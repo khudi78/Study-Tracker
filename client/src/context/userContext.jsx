@@ -19,7 +19,7 @@ export function UserContextProvider({ children }) {
         if (!user) {
             fetchData();
         }
-    }, [user]);
+    }, []);
 
     return (
         <UserContext.Provider value={{ user, setUser }}>

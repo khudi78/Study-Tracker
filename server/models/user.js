@@ -7,9 +7,20 @@ const userSchema= new Schema({
         type:String,
         unique:true
     },
-    password:String
+    username:String,
+    password:String,
+    shorty:[{
+    subject:String,
+    topic:String,
+    duration:String
+    }],
+    
 })
 
+
+
 const UserModel=mongoose.model('User',userSchema)
+//const shortTermModel=mongoose.model('shortTerm',shortTermSchema)
 
 module.exports=UserModel;
+//module.exports=shortTermModel;

@@ -9,10 +9,16 @@ const test=(req,res)=>{
 
 const registerUser= async (req,res)=>{
     try{
-       const {name,email,password} =req.body;
+       const {name,email,password,username} =req.body;
        if(!name){
         return res.json({
             error:'name is required'
+        })
+       };
+
+       if(!username){
+        return res.json({
+            error:'username is required'
         })
        };
 
@@ -33,6 +39,7 @@ const registerUser= async (req,res)=>{
        const user= await User.create({
         name,
         email,
+        username,
         password:hashedPassword,
        }) 
 
@@ -121,10 +128,44 @@ const getProfile = async (req, res) => {
     }
 };
 
+const shortGoal= async (req,res)=>{
+  const userId = req.params.userId; // Assuming user ID is in URL path
+
+  // Validate user ID (implement your validation logic here)
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    const {subject,topic,duration} = req.body;
+
+    // Validate new parameter value (implement your validation logic here)
+    console.log(subject);
+    user.shorty =[{
+           subject,
+           topic,
+           duration
+     }]//= subject;
+    // user.shorty.topic=topic;
+    // user.shorty.duration=duration;
+    await user.save();
+
+    res.send(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+};
+
+
+
 
 module.exports={
     test,
     registerUser,
     loginUser,
     getProfile,
+    shortGoal
 }

@@ -8,22 +8,23 @@ function Signup() {
   const [data, setData] = useState({
     name: "",
     email: "",
+    username:"",
     password: "",
   });
 
   const registerUser = async (e) => {
     e.preventDefault();
-    const {name,email,password}= data
+    const {name,email,password,username}= data
     try{
        const {data} = await axios.post('/register',{
-        name,email,password
+        name,email,username,password
        })
 
        if(data.error){
         toast.error(data.error)
        }else{
         setData({})
-        toast.success('login successful,welcome!')
+        toast.success('registration successful,welcome!')
         navigate('/login')
        }
        
@@ -40,6 +41,13 @@ function Signup() {
           placeholder="enter name..."
           value={data.name}
           onChange={(e) => setData({ ...data, name: e.target.value })}
+        />
+        <label htmlFor="">UserName</label>
+        <input
+          type="text"
+          placeholder="enter username..."
+          value={data.username}
+          onChange={(e) => setData({ ...data, username: e.target.value })}
         />
         <label htmlFor="">Email</label>
         <input
