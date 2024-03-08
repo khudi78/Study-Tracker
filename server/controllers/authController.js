@@ -78,7 +78,7 @@ const loginUser= async (req,res)=>{
 
     if (match) {
         const token = jwt.sign(
-          { email: user.email, id: user._id, name: user.name },
+          { email: user.email, id: user._id, name: user.name,shorty:user.shorty,long:user.long },
           process.env.JWT_SECRET,
           {
             expiresIn: "24h",
@@ -143,11 +143,36 @@ const shortGoal= async (req,res)=>{
 
     // Validate new parameter value (implement your validation logic here)
     console.log(subject);
-    user.shorty =[{
-           subject,
-           topic,
-           duration
-     }]//= subject;
+    user.shorty = user.shorty || []; // Ensure `shorty` is an array
+     user.shorty.push({ subject, topic, duration });//= subject;
+    // user.shorty.topic=topic;
+    // user.shorty.duration=duration;
+    await user.save();
+
+    res.send(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+};
+
+const longGoal= async (req,res)=>{
+  const userId = req.params.userId; // Assuming user ID is in URL path
+
+  // Validate user ID (implement your validation logic here)
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    const {subject,topic,duration} = req.body;
+
+    // Validate new parameter value (implement your validation logic here)
+    console.log(subject);
+    user.long = user.long || []; // Ensure `long` is an array
+     user.long.push({ subject, topic, duration });//= subject;
     // user.shorty.topic=topic;
     // user.shorty.duration=duration;
     await user.save();
@@ -167,5 +192,6 @@ module.exports={
     registerUser,
     loginUser,
     getProfile,
-    shortGoal
+    shortGoal,
+    longGoal
 }

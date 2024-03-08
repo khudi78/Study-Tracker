@@ -59,7 +59,7 @@ function UserDetails() {
             <span class="material-symbols-outlined text-white">
               chevron_right
             </span>
-            <NavLink to="longterm">
+            <NavLink to="/longterm">
               <span className="text-lg font-semibold text-white">
                 Long Term
               </span>
