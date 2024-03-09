@@ -40,7 +40,7 @@ function Todo() {
     const navigate=useNavigate()
     const {user} =useContext(UserContext)
      const userId = user?.id;
-
+    
     // const addTodoHandler=(e)=>{
     //     e.preventDefault();
     //     dispatch(addTodo({input,time}));
@@ -48,44 +48,92 @@ function Todo() {
     // }
   
     const addTask = async (input,time) => {
-      // e.preventDefault();
-       //const {input,time}= data
-       console.log("time",time);
-       console.log("input",input)
-       try {
-        // Input validation (optional):
-        // if (!input || !time) {
-        //   toast.error('Please enter both task and time.');
-        //   return; // Exit the function if validation fails
-        // }
-    
-        const response = await axios.put(`/addtask/${userId}`, {
-          input,
-          time,
-        });
-    
-        if (response.data.error) {
-          toast.error(response.data.error);
-        } else {
-          toast.success('Task added successfully!');
-          // Optional: Update local state or UI if needed
-          // setData({}); // Uncomment if you have state management
-    
-          // Navigate to login only if necessary:
-         
-            // navigate('/login');
+      // input.preventDefault();
+      // time.preventDefault()
+      
+      try{
+        console.log("inside trial")
+        console.log("time",time);
+        console.log("input",input)
+        console.log("id",userId)
+        const data = await axios.put(`/task/${userId}`,{
+          time,input
+         })
+  
+         if(data.error){
+          toast.error(data.error)
+         }else{
           
-        }
-      } catch (error) {
-        console.error('Error adding task:', error);
-        toast.error('An error occurred while adding the task.'); // Inform the user
+          toast.success('event added added!')
+          navigate('/login')
+         }
+        //  const {data} = await axios.put(`/add/${userId}`,{
+        //   input,time
+        //  })
+        //  console.log(data)
+  
+        //  if(data.error){
+        //   toast.error(data.error)
+        //  }else{
+        //   //setData({})
+        //   toast.success('Short Term goal added!')
+        //   navigate('/login')
+        //  }
+         
+      }catch(error){
+  
       }
-     };
+    }
+
+    // const addTask = async (input,time) => {
+    //   // e.preventDefault();
+    //    //const {input,time}= data
+    //    console.log("inside addTask")
+    //    console.log("time",time);
+    //    console.log("input",input)
+    //    try {
+    //     // Input validation (optional):
+    //     // if (!input || !time) {
+    //     //   toast.error('Please enter both task and time.');
+    //     //   return; // Exit the function if validation fails
+    //     // }
+    //     console.log("inside trial")
+    //     console.log("time",time);
+    //     console.log("input",input)
+    //     console.log("id",userId)
+    //     console.log("he")
+        
+    //     const {response}= await axios.put(`/addtask/${userId}`,{
+    //       input,time
+    //      })
+    //      console.log("after response",response)
+
+    //     console.log("inside try")
+    //    console.log("time",time);
+    //    console.log("input",input)
+    
+    //     if (response.error) {
+    //       toast.error(response.error);
+    //     } else {
+    //       toast.success('Task added successfully!');
+    //       // Optional: Update local state or UI if needed
+    //       // setData({}); // Uncomment if you have state management
+    
+    //       // Navigate to login only if necessary:
+         
+    //         // navigate('/login');
+          
+    //     }
+    //   } catch (error) {
+    //     console.error('Error adding task:', error);
+    //     toast.error('An error occurred while adding the task.'); // Inform the user
+    //   }
+    //  };
 
     const addTimetoTask=()=>{
      
       const time=window.prompt("Enter the Duration in minute");
-      
+      console.log("settime",time)
       SetTime(time);
       addTask(input,time);
       

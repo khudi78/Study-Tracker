@@ -211,9 +211,9 @@ const getEvents=async(req,res)=>{
   }
 }
 
-const addTask=async(req,res)=>{
+const getTask=async(req,res)=>{
   const userId = req.params.userId; // Assuming user ID is in URL path
-
+  console.log("userID",userId)
   // Validate user ID (implement your validation logic here)
  
   try {
@@ -221,11 +221,14 @@ const addTask=async(req,res)=>{
     if (!user) {
       return res.status(404).send('User not found');
     }
+    console.log("user",user)
 
     const {input,time} = req.body;
+    console.log("input",input)
+    console.log("time",time)
 
     
-    user.timerTasks = user.timerTask || []; // Ensure `shorty` is an array
+    user.timerTask = user.timerTask || []; // Ensure `shorty` is an array
      user.timerTask.push({ input,time});//= subject;
     // user.shorty.topic=topic;
     // user.shorty.duration=duration;
@@ -247,7 +250,8 @@ module.exports={
     loginUser,
     getProfile,
     shortGoal,
+    getTask,
     longGoal,
     getEvents,
-    addTask
+    
 }

@@ -46,6 +46,7 @@ const UserProfile = () => {
 
   const {user}=useContext(UserContext)
   const userId = user?.id;
+  
   const Goal = async (event,time,key) => {
    
     const name=event;
