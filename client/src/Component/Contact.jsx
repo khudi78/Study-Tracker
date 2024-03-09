@@ -1,10 +1,6 @@
 import React,{useState} from 'react'
 import axios from 'axios'
 import image from "../contact.png";
-
-import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
-
 function Contact() {
       return (
         <div className='flex'>
