@@ -73,7 +73,7 @@ function DropDown({ HandleDrop }) {
           onClick={() => HandleDrop()}
         >
           <span class="material-symbols-outlined text-white">task</span>
-          <span className="text-lg font-medium  text-white">Task List</span>
+          <span className="text-lg font-medium  text-white">Add Task List</span>
         </Link>
       </div>
       <button className="flex items-start m-auto bg-blue-200 p-2 rounded-2xl hover:bg-red-500 duration-300">

@@ -4,7 +4,7 @@ import { parse, isSameDay } from "date-fns";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
 
-function Current() {
+function Completed() {
   const { studygoal } = useStudy();
   const [list, setList] = useState([]);
   const { user } = useContext(UserContext);
@@ -26,38 +26,45 @@ function Current() {
   // }, [studygoal]);
   // console.log(list);
   return (
-    <div>
-      <div className="flex">
-        <h1 className="text-xl font-bold text-white m-10">Date</h1>
-        <h1 className="text-xl font-bold text-white m-10">Event</h1>
-      </div>
+    <div className="flex justify-center mt-10">
+      <div className="flex flex-col  w-[60%] bg-green-100 justify-between text-center">
+        <div className="flex w-full bg-cyan-800 m-auto justify-between">
+          <h1 className="text-2xl font-bold text-black m-2 w-44">Event</h1>
+          <h1 className="text-2xl font-bold text-black m-2 w-44">Date</h1>
+          <h1 className="text-2xl font-bold text-black m-2 w-44">Duration</h1>
+        </div>
+        <div className="flex flex-col gap-1">
+          {task &&
+            task
+              .filter((data) => {
+                const today = new Date();
+                const keyDate = new Date(data.key); // Assuming key is formatted as YYYY-MM-DD
+                today.setHours(0, 0, 0, 0); // Set today's time to midnight
+                keyDate.setHours(0, 0, 0, 0); // Set keyDate's time to midnight
+                return today.getTime() === keyDate.getTime();
+              })
+              .map((data) => (
+                <div
+                  key={data._id}
+                  className="flex m-auto w-full justify-between  odd:bg-cyan-600 even:bg-cyan-400"
+                >
+                  <p className="text-md text-black m-1 font-semibold w-44">
+                    {data.name}
+                  </p>
+                  <p className="text-md text-black m-1 font-semibold w-44">
+                    {data.time}
+                  </p>
+                  <p className="text-md text-black m-1 font-semibold w-44">
+                    {data.key}
+                  </p>
+                </div>
+              ))}
+          {!task && (
+            <p className="text-lg text-black text-center">No tasks found.</p>
+          )}
+        </div>
 
-      <div className="flex flex-col gap-10">
-        {task && 
-        task
-          .filter((data) => {
-            const today = new Date();
-            const keyDate = new Date(data.key); // Assuming key is formatted as YYYY-MM-DD
-
-            // Extract only the date parts (year, month, day) for comparison
-            today.setHours(0, 0, 0, 0); // Set today's time to midnight
-            keyDate.setHours(0, 0, 0, 0); // Set keyDate's time to midnight
-
-            return today.getTime() === keyDate.getTime();
-          })
-          .map((data) => (
-            <div key={data._id} className="text-white w-[500px] h-[50px]">
-              <p>{data.name}</p>
-              <p>{data.time}</p>
-              <p>{data.key}</p>
-            </div>
-          ))}
-        {!task && ( // Display a message if list is undefined (optional)
-          <p>No tasks found.</p>
-        )}
-      </div>
-
-      {/* <div>
+        {/* <div>
         {list.map((item, index) => {
           const dateString = Object.keys(item)[0];
           const value = item[dateString];
@@ -72,8 +79,9 @@ function Current() {
           );
         })}
       </div> */}
+      </div>
     </div>
   );
 }
 
-export default Current;
+export default Completed;

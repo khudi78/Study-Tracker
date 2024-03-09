@@ -23,6 +23,8 @@ import Completed from './Component/StudyGoal/Completed';
 import Future from './Component/StudyGoal/Future';
 import Current from './Component/StudyGoal/Current';
 import Timer from './Component/Timer';
+import Mic from "./Component/Mic";
+
 //import { UserContextProvider } from './context/userContext';
 
 axios.defaults.baseURL = "http://localhost:8000/api";
@@ -47,6 +49,7 @@ function App() {
           <Route path='/future' element={<Future/>}></Route>
           <Route path='/current' element={<Current/>}></Route>
           <Route path='/timer' element={<Timer/>}></Route>
+          <Route path='/mic' element={<Mic/>}/>
         
          
           <Route

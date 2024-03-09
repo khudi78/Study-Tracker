@@ -4,7 +4,7 @@ import image from "../contact.png";
 function Contact() {
       return (
         <div className='flex'>
-        <div className=" mt-32 absolute right-96 ml-96 flex flex-col gap-6 bg-cyan-500 z-20 border-white p-4 h-fit rounded-2xl  shadow-2xl shadow-black w-96">
+        <div className=" mt-32 absolute right-96 ml-96 flex flex-col gap-6 bg-cyan-800 z-20 border-white p-4 h-fit rounded-2xl  shadow-2xl shadow-black w-96">
         <div className=" h-80 w-16 rounded-full flex justify-center items-cente m-auto">
           <form action="">          
             <label htmlFor="">                     

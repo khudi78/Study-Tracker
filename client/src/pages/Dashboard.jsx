@@ -8,6 +8,7 @@ import Demo from "./DashBoard/Demo";
 function DashBoard() {
   const [expand, SetExpand] = useState(false);
   const { user } = useContext(UserContext);
+  console.log("my user",user)
   const expandSelectGoal = () => {
     SetExpand((prev) => !prev);
   };

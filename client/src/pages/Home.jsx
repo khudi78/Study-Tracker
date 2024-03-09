@@ -12,14 +12,16 @@ function Home() {
                   Stop Thinking, The Answer to Everthing is to develop a
                   Skills...
                 </h1>
-                <button className="bg-blue-400 w-fit m-auto h-11 p-2 rounded-2xl hover:bg-transparent hover:border-2 hover:border-blue-200 flex items-center hover:text-blue-200 duration-300">
+                <div className="flex gap-1">
+                <button className="w-20 justify-center flex items-start m-auto mt-10 ml-32 bg-blue-200 p-2 rounded-xl hover:bg-green-500 duration-300">
                   <NavLink
                     to="/login"
                     className="text-lg font-semibold text-black hover:text-blue-200"
                   >
                     Login
                   </NavLink>
-                  <span className="text-lg font-medium text-black"> /</span>
+                  </button>
+                  <button className="w-20 justify-center flex items-start m-auto mt-10 ml-1 bg-blue-200 p-2 rounded-xl hover:bg-green-500 duration-300">
                   <NavLink
                     to="/signup"
                     className="text-lg font-semibold text-black hover:text-blue-200"
@@ -27,6 +29,12 @@ function Home() {
                     SignUp
                   </NavLink>
                 </button>
+                <NavLink to="/mic">
+                  <button>
+                    Mic
+                  </button>
+                </NavLink>
+                </div>
               </div>
               <img
                 src={image}

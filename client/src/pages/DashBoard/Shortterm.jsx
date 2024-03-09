@@ -10,14 +10,20 @@ function Shortterm() {
   const list = user?.shorty;
  console.log("list",list)
   return (
-    <div>
-      <div className='flex flex-col gap-10'>
+    <div className="flex justify-center mt-10">
+    <div className="flex flex-col  w-[60%] bg-green-100 justify-between text-center">
+      <div className="flex w-full bg-cyan-800 m-auto justify-between">
+      <h1 className="text-2xl font-bold text-black m-2 w-44">Subject</h1>
+          <h1 className="text-2xl font-bold text-black m-2 w-44">Topic</h1>
+          <h1 className="text-2xl font-bold text-black m-2 w-44">Duration</h1>
+      </div>
+      <div className="flex flex-col gap-1">
         {list && ( // Only render if list exists (optional chaining)
           list.map((data) => (
-            <div key={data._id} className='text-white w-[500px] h-[50px]'>
-              <p>{data.subject}</p>
-              <p>{data.topic}</p>
-              <p>{data.duration}</p>
+            <div key={data._id} className="text-white h-[50px] flex m-auto w-full justify-between  odd:bg-cyan-600 even:bg-cyan-400">
+            <p className="text-md text-black m-1 font-semibold w-44">{data.subject}</p>
+            <p className="text-md text-black m-1 font-semibold w-44">{data.topic}</p>
+            <p className="text-md text-black m-1 font-semibold w-44">{data.duration}</p>
             </div>
           ))
         )}
@@ -25,6 +31,7 @@ function Shortterm() {
           <p>No short-term goals found.</p>
         )}
       </div>
+    </div>
     </div>
   );
 }

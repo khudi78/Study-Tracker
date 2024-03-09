@@ -26,13 +26,14 @@ function Completed() {
   // }, [studygoal]);
   // console.log(list);
   return (
-    <div>
-      <div className="flex">
-        <h1 className="text-xl font-bold text-white m-10">Date</h1>
-        <h1 className="text-xl font-bold text-white m-10">Event</h1>
-      </div>
-
-      <div className="flex flex-col gap-10">
+    <div className="flex justify-center mt-10">
+      <div className="flex flex-col  w-[60%] bg-green-100 justify-between text-center">
+        <div className="flex w-full bg-cyan-800 m-auto justify-between">
+          <h1 className="text-2xl font-bold text-black m-2 w-44">Event</h1>
+          <h1 className="text-2xl font-bold text-black m-2 w-44">Date</h1>
+          <h1 className="text-2xl font-bold text-black m-2 w-44">Duration</h1>
+        </div>
+        <div className="flex flex-col gap-1">
         {task && 
         task
           .filter((data) => {
@@ -45,15 +46,17 @@ function Completed() {
 
             return today.getTime() > keyDate.getTime();
           }).map((data) => (
-            <div key={data._id} className="text-white w-[500px] h-[50px]">
-              <p>{data.name}</p>
-              <p>{data.time}</p>
-              <p>{data.key}</p>
+            <div key={data._id} className="text-white h-[50px] flex m-auto w-full justify-between  odd:bg-cyan-600 even:bg-cyan-400">
+
+              <p className="text-md text-black m-1 font-semibold w-44">{data.name}</p>
+              <p className="text-md text-black m-1 font-semibold w-44">{data.time}</p>
+              <p className="text-md text-black m-1 font-semibold w-44">{data.key}</p>
             </div>
           ))}
         {!task && ( // Display a message if list is undefined (optional)
           <p>No tasks found.</p>
         )}
+      </div>
       </div>
 
       {/* <div>

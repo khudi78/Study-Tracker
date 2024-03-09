@@ -32,7 +32,7 @@ function UserDetails() {
         >
           <div className="flex justify-between">
             <p className="text-xl font-bold text-white text-center">
-              Study Goal
+              Set Study Goal
             </p>
             <span class="material-symbols-outlined text-white">
               {expand ? "expand_more" : "chevron_right"}

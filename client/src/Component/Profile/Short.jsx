@@ -64,8 +64,15 @@ function Todo() {
   }
   return (
     <div className="flex justify-center mt-3 min-w-full">
+    
       <form action="" onSubmit={handleFormSubmit} className="">
+      <div className="flex  ">
+           <h1 className="text-xl font-bold text-white m-10">Subject</h1>
+             <h1 className="text-xl font-bold text-white m-10">Topic</h1>
+             <h1 className="text-xl font-bold text-white m-10">Duration</h1>
+           </div>
         <input
+         
           type="text"
           className="text-white outline-none bg-transparent border-b-2 m-4 border-blue-200 w-[30rem] text-2xl text-center placeholder:text-gray-400 placeholder:text-2xl"
           value={data.subject}
