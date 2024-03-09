@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import { useStudy } from "../context/StudyGoal";
+import {useContext} from "react"
+import { UserContext } from "../context/userContext";
+import {toast} from "react-hot-toast"
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
+
 const UserProfile = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [hoveredDate, setHoveredDate] = useState(null);
@@ -9,6 +15,7 @@ const UserProfile = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const {studygoal,StudyDispatch}=useStudy();
+  const navigate=useNavigate()
   console.log(events);
   console.log(studygoal)
   const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
@@ -37,13 +44,39 @@ const UserProfile = () => {
     return data;
   };
 
+  const {user}=useContext(UserContext)
+  const userId = user?.id;
+  const Goal = async (event,time,key) => {
+   
+    const name=event;
+    
+    try{
+       const data = await axios.put(`/event/${userId}`,{
+        name,time,key
+       })
+
+       if(data.error){
+        toast.error(data.error)
+       }else{
+        
+        toast.success('event added added!')
+        navigate('/login')
+       }
+       
+    }catch(error){
+
+    }
+  }
+  
   const handleDateClick = (day) => setSelectedDate(day);
 
-  const handleEventAdd = () => {
+  const handleEventAdd =  () => {
     const event = prompt("Enter event name:");
     const time = prompt("Enter event time (optional):");
+    
     if (event && selectedDate !== null) {
-      const key = `${currentYear}-${currentMonth + 1}-${selectedDate}`;
+      const key = `${currentYear}-${currentMonth + 1}-${selectedDate-1}`;
+      Goal(event,time,key);
 
       setEvents((prevEvents) => ({
         ...prevEvents,
@@ -54,6 +87,7 @@ const UserProfile = () => {
         payload:{event,key}
       })
       setSelectedDate(null); // Clear selected date after adding an event
+      
     }
   };
 
@@ -127,8 +161,8 @@ const UserProfile = () => {
                       setHoveredEvent(event);
                     }}
                     onMouseLeave={() => {
-                      setHoveredDate(null);
-                      setHoveredEvent(null);
+                      setHoveredDate(day);
+                      setHoveredEvent(event);
                     }}
                   >
                     <span className="text-white">{day}</span>

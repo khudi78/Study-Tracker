@@ -78,7 +78,7 @@ const loginUser= async (req,res)=>{
 
     if (match) {
         const token = jwt.sign(
-          { email: user.email, id: user._id, name: user.name,shorty:user.shorty,long:user.long },
+          { email: user.email,tasks:user.tasks,timerTask:user.timerTask,  name: user.name,id: user._id,shorty:user.shorty,long:user.long },
           process.env.JWT_SECRET,
           {
             expiresIn: "24h",
@@ -184,6 +184,60 @@ const longGoal= async (req,res)=>{
   }
 };
 
+const getEvents=async(req,res)=>{
+  const userId = req.params.userId; // Assuming user ID is in URL path
+
+  // Validate user ID (implement your validation logic here)
+ 
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    const {name,time,key} = req.body;
+
+    
+    user.tasks = user.tasks || []; // Ensure `shorty` is an array
+     user.tasks.push({ name,time,key});//= subject;
+    // user.shorty.topic=topic;
+    // user.shorty.duration=duration;
+    await user.save();
+
+    res.send(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+const addTask=async(req,res)=>{
+  const userId = req.params.userId; // Assuming user ID is in URL path
+
+  // Validate user ID (implement your validation logic here)
+ 
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    const {input,time} = req.body;
+
+    
+    user.timerTasks = user.timerTask || []; // Ensure `shorty` is an array
+     user.timerTask.push({ input,time});//= subject;
+    // user.shorty.topic=topic;
+    // user.shorty.duration=duration;
+    await user.save();
+
+    res.send(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 
 
 
@@ -193,5 +247,7 @@ module.exports={
     loginUser,
     getProfile,
     shortGoal,
-    longGoal
+    longGoal,
+    getEvents,
+    addTask
 }

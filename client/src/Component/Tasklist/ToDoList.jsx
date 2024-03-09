@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeTodo } from "./TodoSlice";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
 
 function TodoList({ id, text }) {
+  const { user } = useContext(UserContext);
+    console.log("user", user);
+    const timertask = user?.timerTask;
+    console.log("task", timertask);
   const [isChecked, setChecked] = useState(false);
 
   const dispatch = useDispatch();
@@ -27,6 +33,7 @@ function TodoList({ id, text }) {
         <p className={`text-black ${isChecked ? "line-through" : ""} text-xl font-bold`}>
           {text}
         </p>
+
         <button onClick={() => dispatch(removeTodo(id))}>
           <span class="material-symbols-outlined">delete</span>
         </button>

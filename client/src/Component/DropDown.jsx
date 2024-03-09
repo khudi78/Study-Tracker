@@ -3,8 +3,28 @@ import { Link } from "react-router-dom";
 import {useContext} from "react"
 import { UserContext } from "../context/userContext"
 
+import { addTodo } from "./Tasklist/TodoSlice";
+import {useDispatch} from "react-redux"
+
 function DropDown({ HandleDrop }) {
   const {user} =useContext(UserContext)
+  const tasktimer=user?.timerTask
+  const dispatch=useDispatch();
+
+  const addTodoHandler=()=>{
+    //e.preventDefault();
+    tasktimer &&
+    tasktimer.map((data)=>
+    { const input=data.input
+      const time=data.time
+      dispatch(addTodo({ input, time })); // Dispatch inside the map callback
+      
+    }
+    
+    
+    )
+    
+}
 
   return (
     <div
@@ -31,7 +51,10 @@ function DropDown({ HandleDrop }) {
         <Link
           to="/timer"
           className="flex items-center w-64 rounded-2xl p-1 hover:bg-cyan-950 justify-center"
-          onClick={() => HandleDrop()}
+          onClick={() => {
+            HandleDrop(); // Call HandleDrop first
+            addTodoHandler(); // Then call addTodoHandler
+          }}
         >
           <span class="material-symbols-outlined text-white">timer</span>
           <span className="text-lg font-medium  text-white">TImer</span>
