@@ -6,24 +6,25 @@ import { UserContext } from '../context/userContext';
 
 function Timer() {
     const list=useSelector(state=>state.todos);
-    // const { user } = useContext(UserContext);
-    // console.log("user", user);
-    // const timertask = user?.timerTask;
-    // console.log("task", timertask);
+    const { user } = useContext(UserContext);
+    console.log("user", user);
+     const tasks = user?.tasks;
+    console.log("task", tasks);
 
     console.log("list is",list);
   return (
      <div>
-         {/* { 
-      timertask && timertask
+         
+        { list.map(({id,text,time})=><TodoList key={id} text={text} time={time} id={id}/>)}
+        {/* { 
+      tasks && tasks
           .map((data) => (
             <div key={data._id} className="text-white w-[500px] h-[50px]">
-              <TodoList key={data._id} text={data.input} time={data.time} id={data._id}/>
+              <TodoList key={data._id} text={data.name} time={data.time} id={data._id}/>
               
             </div>
           ))
           } */}
-        { list.map(({id,text,time})=><TodoList key={id} text={text} time={time} id={id}/>)}
         </div>
   )
 }

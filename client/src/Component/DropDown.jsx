@@ -9,6 +9,9 @@ import {useDispatch} from "react-redux"
 function DropDown({ HandleDrop }) {
   const {user} =useContext(UserContext)
   const tasktimer=user?.timerTask
+  const tasks=user?.tasks
+  const shorty=user?.shorty
+  const long=user?.long
   const dispatch=useDispatch();
 
   const addTodoHandler=()=>{
@@ -19,10 +22,31 @@ function DropDown({ HandleDrop }) {
       const time=data.time
       dispatch(addTodo({ input, time })); // Dispatch inside the map callback
       
-    }
-    
-    
-    )
+    } )
+
+    tasks &&
+    tasks.map((data)=>
+    { const input=data.name
+      const time=data.time
+      dispatch(addTodo({ input, time })); // Dispatch inside the map callback
+      
+    } )
+
+    shorty &&
+    shorty.map((data)=>
+    { const input=data.subject
+      const time=data.duration
+      dispatch(addTodo({ input, time })); // Dispatch inside the map callback
+      
+    } )
+
+    long &&
+    long.map((data)=>
+    { const input=data.subject
+      const time=data.duration
+      dispatch(addTodo({ input, time })); // Dispatch inside the map callback
+      
+    } )
     
 }
 

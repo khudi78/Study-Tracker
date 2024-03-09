@@ -2,9 +2,13 @@ import task from '../Task.png'
 import Todo from './Tasklist/ToDo';
 import TodoList from './Tasklist/ToDoList';
 import { useSelector,useDispatch } from 'react-redux'
+import { useContext } from "react";
+import { UserContext } from "../context/userContext";
 import { removeTodo} from './Tasklist/TodoSlice'
+
 function TaskList() {
   const todos=useSelector(state=>state.todos);
+
   console.log(todos);
   return (
     <div className='flex flex-col'>
