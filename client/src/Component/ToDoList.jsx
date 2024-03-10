@@ -10,7 +10,7 @@ function TodoList({ id, text,time }) {
       <div
         key={id}
         className={`text-white text-xl flex space-x-6 
-          bg-blue-200 m-4 w-[60%] justify-between rounded-xl h-12 items-center`}
+          bg-blue-200 m-4 w-[60%] justify-between rounded-xl h-16 items-center`}
         >
         <p className={`text-black text-xl font-bold pl-7`}>
           {text}

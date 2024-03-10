@@ -49,7 +49,7 @@ function Todo() {
        }else{
         setData({})
         toast.success('Short Term goal added!')
-        navigate('/login')
+        navigate('/short')
        }
        
     }catch(error){

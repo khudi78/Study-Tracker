@@ -65,7 +65,7 @@ function DropDown({ HandleDrop }) {
             </span>
           </div>
           <div className="flex flex-col gap-6 text-center">
-             <h1 className="text-xl text-white font-medium">{!!user && (<h1>{user.name}</h1>)}</h1>
+             <h1 className="text-xl capitalize text-white font-medium">{!!user && (<h1>{user.name}</h1>)}</h1>
              <h2 className="text-xl text-white font-medium">{!!user && (<h1>{user.email}</h1>)}</h2>
             <h3 className="texxt-lg font-semibold text-white text-center">
               9905070511
@@ -100,12 +100,18 @@ function DropDown({ HandleDrop }) {
           <span className="text-lg font-medium  text-white">Add Task List</span>
         </Link>
       </div>
-      <button className="flex items-start m-auto bg-blue-200 p-2 rounded-2xl hover:bg-red-500 duration-300">
+      {/* <button className="flex items-start m-auto bg-blue-200 p-2 rounded-2xl hover:bg-red-500 duration-300">
         <span class="material-symbols-outlined text-2xl font-bold  text-black">
           logout
         </span>
         <span className="text-xl font-bold  text-black">Logout</span>
-      </button>
+      </button> */}
+      <button className="w-24 justify-center shadow-md shadow-slate-500 text-white flex items-start m-auto  bg-slate-700 p-3 rounded-lg hover:bg-slate-400 hover:shadow-slate-600 hover:text-black  duration-300">
+      <span class="material-symbols-outlined text-2xl font-bold   hover:text-black">
+          logout
+        </span>
+                    SignUp
+       </button>
     </div>
   );
 }

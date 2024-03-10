@@ -4,19 +4,19 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 const data = [
   {
     name: '01',
-    uv: 24,
+    uv: 5,
     pv: 30,
     amt: 30,
   },
   {
     name: '02',
-    uv: 21,
+    uv: 12,
     pv:30,
     amt:30
   },
   {
     name: '03',
-    uv: 18,
+    uv: 14,
     pv:30,
    amt:30
   },
@@ -52,25 +52,25 @@ const data = [
   },
   {
     name: '09',
-    uv: 0,
+    uv: 3,
     pv: 4300,
     amt: 2100,
   },
   {
     name: '10',
-    uv: 24,
+    uv: 5,
     pv: 4300,
     amt: 2100,
   },
   {
     name: '11',
-    uv: 21,
+    uv: 11,
     pv: 2400,
     amt: 2400,
   },
   {
     name: '12',
-    uv: 18,
+    uv: 4,
     pv:30,
     amt:30
   },
@@ -82,7 +82,7 @@ const data = [
   },
   {
     name: '14',
-    uv: 12,
+    uv: 2,
     pv:30,
     amt:30
   },
@@ -106,13 +106,13 @@ const data = [
   },
   {
     name: '18',
-    uv: 0,
+    uv: 7,
     pv: 4300,
     amt: 2100,
   },
   {
     name: '19',
-    uv: 21,
+    uv: 16,
     pv: 4300,
     amt: 2100,
   },
@@ -130,7 +130,7 @@ const data = [
   },
   {
     name: '22',
-    uv: 24,
+    uv: 13,
     pv:30,
     amt:30
   },
@@ -172,7 +172,7 @@ const data = [
   },
   {
     name: '29',
-    uv: 3,
+    uv: 13,
     pv:30 ,
     amt: 30,
   },
@@ -202,13 +202,13 @@ export default class Demo extends PureComponent {
             right: 30,
             left: 0,
             bottom: 0,
-          }}
+          }}  
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="name"  />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Area type="monotone" dataKey="uv"  fill="#8884d8" />
         </AreaChart>
       </ResponsiveContainer>
     );

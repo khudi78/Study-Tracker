@@ -61,7 +61,7 @@ const UserProfile = () => {
        }else{
         
         toast.success('event added added!')
-        navigate('/login')
+        navigate('/Dashboard')
        }
        
     }catch(error){

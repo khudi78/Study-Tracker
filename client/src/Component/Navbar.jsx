@@ -16,10 +16,16 @@ function Navbar() {
     <>
     <div>
       <nav className="flex justify-between h-16 bg-gradient-to-r from-[#10357a] via-[#032759] to-cyan-950 items-center ">
+        <Link to="/">
         <div className="flex items-center ml-6 bg-blue-200 rounded-3xl p-2">
+          
           <img src={logo} alt="" className="h-10 w-10 bg-none" />
+          
+          
           <h1 className="text-2xl font-bold text-black">StudySnap</h1>
         </div>
+        </Link>
+        
         <div className=" w-[29rem] mr-10">
           <ul className="flex  w-full justify-between">
             <li>

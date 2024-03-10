@@ -49,7 +49,7 @@ function Todo() {
        }else{
         setData({})
         toast.success('Long Term goal added!')
-        navigate('/login')
+        navigate('/long')
        }
        
     }catch(error){

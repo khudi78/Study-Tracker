@@ -18,5 +18,6 @@ router.put('/shortTerm/:userId',shortGoal)
 router.put('/longTerm/:userId',longGoal)
 router.put('/event/:userId',getEvents)
 router.put('/task/:userId',getTask)
+
 //router.put('/add/:userId',addTask)
 module.exports=router

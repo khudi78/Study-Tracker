@@ -23,7 +23,9 @@ import Completed from './Component/StudyGoal/Completed';
 import Future from './Component/StudyGoal/Future';
 import Current from './Component/StudyGoal/Current';
 import Timer from './Component/Timer';
-import Mic from "./Component/Mic";
+
+import MicDrop from "./Component/MicDrop";
+//import Mic from "./Component/Mic";
 
 //import { UserContextProvider } from './context/userContext';
 
@@ -49,13 +51,13 @@ function App() {
           <Route path='/future' element={<Future/>}></Route>
           <Route path='/current' element={<Current/>}></Route>
           <Route path='/timer' element={<Timer/>}></Route>
-          <Route path='/mic' element={<Mic/>}/>
-        
+         
+          <Route path='/micdrop' element={<MicDrop/>}></Route>
          
           <Route
             path="/userProfile"
             element={
-              <div className="flex justify-between">
+              <div className=" w-[1100 px] ml-[150px] mr-[150px] flex justify-between">
                 <UserDetails />
                 <UserProfile />
                 <img
